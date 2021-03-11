@@ -8,13 +8,15 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductComponent implements OnInit {
 
-
+//productListResponseModel: productListResponseModel={}
 
   products:Product[] = [];
+
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log("Init çalıştı");
   }
 
 }
