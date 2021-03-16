@@ -1,4 +1,13 @@
 <table class="table table-borderless">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ürün Adı</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Stok Adedi</th>
+        </tr>
+    </thead>
     <tr *ngFor="let product of products">
         <td>{{product.productId}}</td>
         <td>{{product.productName}}</td>

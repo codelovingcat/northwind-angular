@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import {HttpClient} from '@angular/common/http'
+import {ProductListResponseModel} from 'src/app/models/productListResponseModel';
 
 @Component({
   selector: 'app-product',
@@ -8,15 +10,20 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductComponent implements OnInit {
 
-//productListResponseModel: productListResponseModel={}
-
   products:Product[] = [];
-
-
-  constructor() { }
+  apiUrl= 'https://localhost:44365/api/products/getall';
+  constructor(private httpClient:HttpClient) {}
 
   ngOnInit(): void {
-    console.log("Init çalıştı");
+    this.getProducts();
+    console.log("Çalıştı")
   }
 
+  getProducts(){
+    this.httpClient
+    .get<ProductListResponseModel>(this.apiUrl)
+    .subscribe((response)=>{
+    this.products = response.data
+     });
+  }
 }
